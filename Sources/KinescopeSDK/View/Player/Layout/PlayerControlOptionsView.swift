@@ -134,7 +134,7 @@ private extension PlayerControlOptionsView {
             button.tintColor = config.normalColor
             button.squareSize(with: config.iconSize)
 
-            button.addTarget(nil, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
 
             return button
         }
