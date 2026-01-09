@@ -142,7 +142,6 @@ private extension PlayerControlOptionsView {
 
     func fillStack(with options: [KinescopePlayerOption], expanded: Bool) {
         guard !options.isEmpty else {
-            clearStack()
             return
         }
     
