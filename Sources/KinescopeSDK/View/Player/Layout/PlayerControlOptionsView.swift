@@ -142,15 +142,19 @@ private extension PlayerControlOptionsView {
 
     func fillStack(with options: [KinescopePlayerOption], expanded: Bool) {
         guard !options.isEmpty else {
+            clearStack()
             return
         }
-
+    
         clearStack()
-
-        let filteredOptions = expanded
-            ? options
-            : Array(options.dropFirst(options.count - 2))
-
+    
+        let filteredOptions: [KinescopePlayerOption]
+        if expanded || options.count <= 2 {
+            filteredOptions = options
+        } else {
+            filteredOptions = Array(options.suffix(2))
+        }
+    
         filteredOptions
             .enumerated()
             .map { index, option in
@@ -159,7 +163,7 @@ private extension PlayerControlOptionsView {
             .forEach { [weak self] button in
                 self?.stackView.addArrangedSubview(button)
             }
-
+    
         set(subtitleOn: isSubtitleOn)
     }
 
